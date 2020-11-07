@@ -1,0 +1,12 @@
+.breadcrumb {
+    background-color: #ff9898;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+a {
+    color: #2d9244;
+    &:hover {
+        color: #f92121;
+    }
+}
