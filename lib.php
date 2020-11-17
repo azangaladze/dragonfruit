@@ -43,6 +43,22 @@ function theme_dragonfruit_get_pre_scss($theme) {
     }
     $scss = theme_boost_get_pre_scss($boosttheme);
 
+	//Drawer size.
+        if (!empty($theme->settings->drawersize)) {
+            global $CFG;
+        $drawersize = $theme->settings->drawersize;
+
+        $scss .= '$drawer-width: '. $theme->settings->drawersize .'px;';
+        }    
+
+    //Blocks size.
+        if (!empty($theme->settings->blocksize)) {
+            global $CFG;
+        $blocksize = $theme->settings->blocksize;
+
+        $scss .= '$blocks-column-width: '. $theme->settings->blocksize .'px;';
+    }    
+
     return $scss;
 }
 

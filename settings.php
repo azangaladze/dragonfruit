@@ -28,6 +28,37 @@ defined('MOODLE_INTERNAL') || die;
 if ($ADMIN->fulltree) {
     // Add your settings here.
 
+    //Drawer size change.
+        global $CFG;
+    if (file_exists("{$CFG->dirroot}/theme/dragonfruit/dragonfruit_admin_setting_configdrawersize.php")) {
+        require_once($CFG->dirroot . '/theme/dragonfruit/dragonfruit_admin_setting_configdrawersize.php');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/dragonfruit/dragonfruit_admin_setting_configdrawersize.php"))
+        {
+        require_once($CFG->themedir . '/dragonfruit/dragonfruit_admin_setting_configdrawersize.php');
+    }
+    $name = 'theme_dragonfruit/drawersize';
+    $title = get_string('drawersize', 'theme_dragonfruit');
+    $description = get_string('drawersizedesc', 'theme_dragonfruit');
+    $default = 285;
+    $setting = new dragonfruit_admin_setting_configdrawersize($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
+    //Blocks size change.
+    if (file_exists("{$CFG->dirroot}/theme/dragonfruit/dragonfruit_admin_setting_configblocksize.php")) {
+        require_once($CFG->dirroot . '/theme/dragonfruit/dragonfruit_admin_setting_configblocksize.php');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/dragonfruit/dragonfruit_admin_setting_configblocksize.php"))
+        {
+        require_once($CFG->themedir . '/dragonfruit/dragonfruit_admin_setting_configblocksize.php');
+    }
+    $name = 'theme_dragonfruit/blocksize';
+    $title = get_string('blocksize', 'theme_dragonfruit');
+    $description = get_string('blocksizedesc', 'theme_dragonfruit');
+    $default = 360;
+    $setting = new dragonfruit_admin_setting_configblocksize($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $settings->add($setting);
+
     // Custom CSS.
     $name = 'theme_dragonfruit/customcss';
     $title = get_string('customcss', 'theme_dragonfruit');
