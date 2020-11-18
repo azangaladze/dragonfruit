@@ -30,32 +30,25 @@ if ($ADMIN->fulltree) {
 
     //Drawer size change.
         global $CFG;
-    if (file_exists("{$CFG->dirroot}/theme/dragonfruit/dragonfruit_admin_setting_configdrawersize.php")) {
-        require_once($CFG->dirroot . '/theme/dragonfruit/dragonfruit_admin_setting_configdrawersize.php');
-    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/dragonfruit/dragonfruit_admin_setting_configdrawersize.php"))
-        {
-        require_once($CFG->themedir . '/dragonfruit/dragonfruit_admin_setting_configdrawersize.php');
+    if (file_exists("{$CFG->dirroot}/theme/dragonfruit/dragonfruit_admin_setting_configsize.php")) {
+        require_once($CFG->dirroot . '/theme/dragonfruit/dragonfruit_admin_setting_configsize.php');
+    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/dragonfruit/dragonfruit_admin_setting_configsize.php")) {
+        require_once($CFG->themedir . '/dragonfruit/dragonfruit_admin_setting_configsize.php');
     }
-    $name = 'theme_dragonfruit/drawersize';
+    $name = 'theme_dragonfruit/drawersize'; 
     $title = get_string('drawersize', 'theme_dragonfruit');
-    $description = get_string('drawersizedesc', 'theme_dragonfruit');
+    $description = get_string('sizedesc', 'theme_dragonfruit', array('lower' => '200', 'upper' => '500'));
     $default = 285;
-    $setting = new dragonfruit_admin_setting_configdrawersize($name, $title, $description, $default);
+    $setting = new dragonfruit_admin_setting_configsize($name, $title, $description, $default, 200, 500);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 
     //Blocks size change.
-    if (file_exists("{$CFG->dirroot}/theme/dragonfruit/dragonfruit_admin_setting_configblocksize.php")) {
-        require_once($CFG->dirroot . '/theme/dragonfruit/dragonfruit_admin_setting_configblocksize.php');
-    } else if (!empty($CFG->themedir) && file_exists("{$CFG->themedir}/dragonfruit/dragonfruit_admin_setting_configblocksize.php"))
-        {
-        require_once($CFG->themedir . '/dragonfruit/dragonfruit_admin_setting_configblocksize.php');
-    }
     $name = 'theme_dragonfruit/blocksize';
     $title = get_string('blocksize', 'theme_dragonfruit');
-    $description = get_string('blocksizedesc', 'theme_dragonfruit');
+    $description = get_string('sizedesc', 'theme_dragonfruit', array('lower' => '250', 'upper' => '650'));
     $default = 360;
-    $setting = new dragonfruit_admin_setting_configblocksize($name, $title, $description, $default);
+    $setting = new dragonfruit_admin_setting_configsize($name, $title, $description, $default, 250, 650);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $settings->add($setting);
 

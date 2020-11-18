@@ -43,21 +43,17 @@ function theme_dragonfruit_get_pre_scss($theme) {
     }
     $scss = theme_boost_get_pre_scss($boosttheme);
 
-	//Drawer size.
-        if (!empty($theme->settings->drawersize)) {
-            global $CFG;
+    // Drawer size.
+    if (!empty($theme->settings->drawersize)) {
         $drawersize = $theme->settings->drawersize;
-
         $scss .= '$drawer-width: '. $theme->settings->drawersize .'px;';
-        }    
+    }
 
-    //Blocks size.
-        if (!empty($theme->settings->blocksize)) {
-            global $CFG;
+    // Block size.
+    if (!empty($theme->settings->blocksize)) {
         $blocksize = $theme->settings->blocksize;
-
         $scss .= '$blocks-column-width: '. $theme->settings->blocksize .'px;';
-    }    
+    }
 
     return $scss;
 }
